@@ -4,16 +4,36 @@ Sleeper g_sleeper;
 
 // Initialisation code
 void setup(void) {
-	Serial.begin(9600);
-	Serial.println("Setup done.");
+    //Open Serial port
+    Serial.begin(9600);
+    
+    //Setting the 13 pin (LED) mode is OUTPUT.
+    pinMode(13,OUTPUT);
+    
+    //Turn off the LED
+    digitalWrite(13,LOW);
+    
+    //Send message to Serial port
+    Serial.println("Setup done.");
 }
 
 // Main loop
 void loop(void) {
-	Serial.print("Total milliseconds awake: ");
+    //-------------- Do when Wake Up Start ----------------//
+    //Send message to Serial port
+    Serial.print("Total milliseconds awake: ");
     Serial.println(millis());
+    
+    //Turn on the LED
+    digitalWrite(13,HIGH);
+    
+    //Wait 0.1s
     delay(100);
-
-	// Power down for 10 seconds.
-	g_sleeper.SleepMillis(10000);
+    
+    //Turn on the LED
+    digitalWrite(13,LOW);
+    //-------------- Do when Wake Up End -----------------//
+    
+  // Power down for 3 seconds.
+  g_sleeper.SleepMillis(3000);
 }
