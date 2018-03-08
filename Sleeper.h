@@ -8,9 +8,16 @@
 // This sleeper class utilises the watchdog timer as the oscilators for the timers get powered off in SLEEP_MODE_PWR_DOWN
 // mode, which is the most power effcient sleep mode. The sleep time will not be more than 16ms accurate.
 
+enum adc_t
+{
+  ADC_OFF,
+  ADC_ON
+};
+
 class Sleeper {
 	public:
 	void SleepMillis(long millis);
+	void SetADC(adc_t adc);
 
 	private:
 	void DoSleep();

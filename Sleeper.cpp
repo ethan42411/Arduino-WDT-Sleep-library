@@ -27,6 +27,16 @@ void Sleeper::SleepMillis(long millis) {
 	}
 }
 
+/// Setting ADC (Analog-to-Digital Converter) module Enable/Disable
+void Sleeper::SetADC(adc_t adc) {
+    if (adc == ADC_OFF)	{
+        ADCSRA &= ~(1 << ADEN);
+    }
+    if (adc == ADC_ON)	{
+        ADCSRA |= (1 << ADEN);
+    }
+}
+
 /// Sets up the watchdog to timeout after a certain time period.
 /// There are many comments / notes in this function which have been copied directly from the data sheet for
 /// user convenience.

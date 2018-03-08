@@ -13,6 +13,9 @@ void setup(void) {
     //Turn off the LED
     digitalWrite(13,LOW);
     
+    //Disable ADC (Analog-to-Digital Converter module
+    g_sleeper.SetADC(ADC_OFF);
+    
     //Send message to Serial port
     Serial.println("Setup done.");
 }
